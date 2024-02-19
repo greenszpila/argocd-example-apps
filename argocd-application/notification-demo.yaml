@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: notification-demo
+  namespace: argocd
+  annotations:
+    notifications.argoproj.io/subscribe.newrelic-app-deployed.newrelic: ""
+    entityguid: "<NEW RELIC ENTITY GUID>"
+    # notifications.argoproj.io/subscribe.newrelic-app-sync-succeeded.newrelic: ""
+spec:
+  destination:
+    name: ''
+    namespace: notification-demo
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: px-sock-shop
+    repoURL: 'https://github.com/greenszpila/argocd-example-apps'
+    targetRevision: main
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
