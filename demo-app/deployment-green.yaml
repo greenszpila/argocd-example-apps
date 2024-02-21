@@ -11,7 +11,7 @@ spec:
     metadata:
       labels:
         app: nodejs-app-green
-        deployment-version: v5
+        deployment-version: v6
     spec:
       containers:
       - name: nodejs-app
