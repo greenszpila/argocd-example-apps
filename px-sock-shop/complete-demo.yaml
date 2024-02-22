@@ -274,6 +274,7 @@ spec:
     metadata:
       labels:
         name: front-end
+        version: v1 
     spec:
       containers:
       - name: front-end
